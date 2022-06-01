@@ -1,24 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Posts from "./Components/Posts";
+import { useState } from "react";
+import AddPost from "./Components/AddPost";
 function App() {
+  const onDelete = (post)=> {
+    // alert("delete");
+    
+  setPosts(posts.filter((e)=>{
+    return e!==post;
+
+  }))
+  
+}
+const addPost = (title, content)=>{
+  console.log("i am adding this post", title, content)
+}
+    
+const [posts, setPosts] = useState([
+  {
+    srno: "0",
+    title: "abc",
+    content: "abcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc"
+
+  },
+  {
+    srno: "1",
+    title: "abc",
+    content: "abcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc"
+
+  },
+  {
+    srno: "2",
+    title: "abc",
+    content: "abcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc"
+
+  },
+  {
+    srno: "3",
+    title: "abc",
+    content: "abcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc"
+
+  }]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <>
+      <Header title="Blog-App"/>
+      <AddPost addPost={addPost} />
+        <Posts posts={posts} onDelete={onDelete}/>
+      <Footer />
+    </>
   );
 }
 
